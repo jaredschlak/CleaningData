@@ -3,21 +3,21 @@
   {
    "cell_type": "code",
    "execution_count": 1,
-   "id": "40e9d425",
+   "id": "1687a8b1",
    "metadata": {
     "_cell_guid": "b1076dfc-b9ad-4769-8c92-a6c4dae69d19",
     "_uuid": "8f2839f25d086af736a60e9eeb907d3b93b6e0e5",
     "execution": {
-     "iopub.execute_input": "2025-09-07T00:00:54.297369Z",
-     "iopub.status.busy": "2025-09-07T00:00:54.296805Z",
-     "iopub.status.idle": "2025-09-07T00:00:57.644645Z",
-     "shell.execute_reply": "2025-09-07T00:00:57.643262Z"
+     "iopub.execute_input": "2025-09-07T00:05:04.443500Z",
+     "iopub.status.busy": "2025-09-07T00:05:04.443077Z",
+     "iopub.status.idle": "2025-09-07T00:05:06.529557Z",
+     "shell.execute_reply": "2025-09-07T00:05:06.528138Z"
     },
     "papermill": {
-     "duration": 3.354769,
-     "end_time": "2025-09-07T00:00:57.646932",
+     "duration": 2.092119,
+     "end_time": "2025-09-07T00:05:06.531309",
      "exception": false,
-     "start_time": "2025-09-07T00:00:54.292163",
+     "start_time": "2025-09-07T00:05:04.439190",
      "status": "completed"
     },
     "tags": []
@@ -34,41 +34,32 @@
     }
    ],
    "source": [
-    "# This Python 3 environment comes with many helpful analytics libraries installed\n",
-    "# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python\n",
-    "# For example, here's several helpful packages to load\n",
+    "#Important libraries imported below\n",
     "\n",
     "import numpy as np # linear algebra\n",
-    "import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)\n",
-    "\n",
-    "# Input data files are available in the read-only \"../input/\" directory\n",
-    "# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory\n",
-    "\n",
+    "import pandas as pd # data processing\n",
     "import os\n",
     "for dirname, _, filenames in os.walk('/kaggle/input'):\n",
     "    for filename in filenames:\n",
-    "        print(os.path.join(dirname, filename))\n",
-    "\n",
-    "# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using \"Save & Run All\" \n",
-    "# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session"
+    "        print(os.path.join(dirname, filename))"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": 2,
-   "id": "62a8b7d7",
+   "id": "0dff64da",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-09-07T00:00:57.655958Z",
-     "iopub.status.busy": "2025-09-07T00:00:57.655527Z",
-     "iopub.status.idle": "2025-09-07T00:00:57.850329Z",
-     "shell.execute_reply": "2025-09-07T00:00:57.848736Z"
+     "iopub.execute_input": "2025-09-07T00:05:06.537142Z",
+     "iopub.status.busy": "2025-09-07T00:05:06.536678Z",
+     "iopub.status.idle": "2025-09-07T00:05:06.680029Z",
+     "shell.execute_reply": "2025-09-07T00:05:06.678940Z"
     },
     "papermill": {
-     "duration": 0.202729,
-     "end_time": "2025-09-07T00:00:57.852677",
+     "duration": 0.148544,
+     "end_time": "2025-09-07T00:05:06.682000",
      "exception": false,
-     "start_time": "2025-09-07T00:00:57.649948",
+     "start_time": "2025-09-07T00:05:06.533456",
      "status": "completed"
     },
     "tags": []
@@ -456,9 +447,10 @@
     }
    ],
    "source": [
-    "\n",
+    "#Create a dataframe \"df\" that gets the house pricing data from Kaggle\n",
     "df = pd.read_csv('/kaggle/input/housing-prices-data/house-price-20211124T154130Z-001/house-price/house_prices_records.csv')\n",
     "\n",
+    "#Shows a sampling of the data, missing values, and also describes the data like displaying the median, mode, min, max, etc.\n",
     "pd.set_option('display.max_columns', None)\n",
     "print(df.head(100))\n",
     "df.info()\n",
@@ -468,19 +460,19 @@
   {
    "cell_type": "code",
    "execution_count": 3,
-   "id": "962d2b2a",
+   "id": "2b4fc736",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-09-07T00:00:57.862666Z",
-     "iopub.status.busy": "2025-09-07T00:00:57.861842Z",
-     "iopub.status.idle": "2025-09-07T00:00:57.956496Z",
-     "shell.execute_reply": "2025-09-07T00:00:57.955008Z"
+     "iopub.execute_input": "2025-09-07T00:05:06.689242Z",
+     "iopub.status.busy": "2025-09-07T00:05:06.688881Z",
+     "iopub.status.idle": "2025-09-07T00:05:06.840152Z",
+     "shell.execute_reply": "2025-09-07T00:05:06.839207Z"
     },
     "papermill": {
-     "duration": 0.101057,
-     "end_time": "2025-09-07T00:00:57.958670",
+     "duration": 0.157038,
+     "end_time": "2025-09-07T00:05:06.841906",
      "exception": false,
-     "start_time": "2025-09-07T00:00:57.857613",
+     "start_time": "2025-09-07T00:05:06.684868",
      "status": "completed"
     },
     "tags": []
@@ -902,14 +894,14 @@
   },
   "papermill": {
    "default_parameters": {},
-   "duration": 14.115863,
-   "end_time": "2025-09-07T00:00:58.585800",
+   "duration": 8.735943,
+   "end_time": "2025-09-07T00:05:07.365377",
    "environment_variables": {},
    "exception": null,
    "input_path": "__notebook__.ipynb",
    "output_path": "__notebook__.ipynb",
    "parameters": {},
-   "start_time": "2025-09-07T00:00:44.469937",
+   "start_time": "2025-09-07T00:04:58.629434",
    "version": "2.6.0"
   }
  },
